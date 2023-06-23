@@ -6,7 +6,7 @@
 // // import { Chain } from "wagmi";
 // // import { VaultTransaction } from "../types/vaults";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatToFourDecimalsRaw = exports.formatToFourDecimals = void 0;
+exports.formatFirstLetterCapitalised = exports.shortenHash = exports.shortenAddress = exports.formatNumberWithCommas = exports.formatToTwoDecimals = exports.formatToFourDecimalsRaw = exports.formatToFourDecimals = void 0;
 const formatToFourDecimals = (amount) => {
     const parsedAmount = parseFloat(amount);
     if (parsedAmount === 0)
@@ -26,32 +26,32 @@ const formatToFourDecimalsRaw = (amount) => {
     return parsedAmount.toFixed(4);
 };
 exports.formatToFourDecimalsRaw = formatToFourDecimalsRaw;
-// export const formatToTwoDecimals = (amount: string) => {
-//   const parsedAmount = parseFloat(amount);
-//   const roundedToTwoDecimals = parsedAmount.toFixed(2);
-//   return roundedToTwoDecimals;
-// };
-// // add a comma every 3 digits
-// export const formatNumberWithCommas = (amount: string) => {
-//   const parsedAmount = parseFloat(amount);
-//   const formatToFourDecimal = parsedAmount.toFixed(6);
-//   const roundedToFourDecimal = +formatToFourDecimal;
-//   const convertToFourDecimalsWithCommas = roundedToFourDecimal.toLocaleString(
-//     "en-US",
-//     {
-//       maximumFractionDigits: 4,
-//       minimumFractionDigits: 4
-//     }
-//   );
-//   return convertToFourDecimalsWithCommas;
-// };
-// export const shortenAddress = (address: string) =>
-//   `${address.slice(0, 5)}...${address.slice(address.length - 5)}`;
-// export const shortenHash = (hash: string) => {
-//   const start = hash.substring(0, 15);
-//   const end = hash.substring(hash.length - 15, hash.length);
-//   return `${start}...${end}`;
-// };
+const formatToTwoDecimals = (amount) => {
+    const parsedAmount = parseFloat(amount);
+    const roundedToTwoDecimals = parsedAmount.toFixed(2);
+    return roundedToTwoDecimals;
+};
+exports.formatToTwoDecimals = formatToTwoDecimals;
+// add a comma every 3 digits
+const formatNumberWithCommas = (amount) => {
+    const parsedAmount = parseFloat(amount);
+    const formatToFourDecimal = parsedAmount.toFixed(6);
+    const roundedToFourDecimal = +formatToFourDecimal;
+    const convertToFourDecimalsWithCommas = roundedToFourDecimal.toLocaleString("en-US", {
+        maximumFractionDigits: 4,
+        minimumFractionDigits: 4
+    });
+    return convertToFourDecimalsWithCommas;
+};
+exports.formatNumberWithCommas = formatNumberWithCommas;
+const shortenAddress = (address) => `${address.slice(0, 5)}...${address.slice(address.length - 5)}`;
+exports.shortenAddress = shortenAddress;
+const shortenHash = (hash) => {
+    const start = hash.substring(0, 15);
+    const end = hash.substring(hash.length - 15, hash.length);
+    return `${start}...${end}`;
+};
+exports.shortenHash = shortenHash;
 // // Derived from EthersJS version for Bytes32
 // export const formatBytes16String = (text: string) => {
 //   // Get the bytes
@@ -77,8 +77,8 @@ exports.formatToFourDecimalsRaw = formatToFourDecimalsRaw;
 //   // Determine the string value
 //   return ethers.utils.toUtf8String(data.slice(0, nullTermination));
 // };
-// export const formatFirstLetterCapitalised = (string: string) =>
-//   `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;
+const formatFirstLetterCapitalised = (string) => `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;
+exports.formatFirstLetterCapitalised = formatFirstLetterCapitalised;
 // // Deprecated
 // export const formatTimeToHMS = (time: string, shortForm?: boolean) => {
 //   const now = dayjs();
@@ -118,23 +118,23 @@ exports.formatToFourDecimalsRaw = formatToFourDecimalsRaw;
 //   // time is less than 5 mins
 //   return `${prefix}${Math.abs(minutes)}m ${Math.abs(seconds)}s`;
 // };
-// // export const formatTrackCondition = (meetRaces: MeetInfo) => {
-// //   if (!meetRaces.trackCondition) return;
-// //   const LookupMap: Map<string, string> = new Map([
-// //     ["GOOD", "GOOD"],
-// //     ["GOOD3", "GOOD (3)"],
-// //     ["GOOD4", "GOOD (4)"],
-// //     ["FIRM1", "FIRM (1)"],
-// //     ["FIRM2", "FIRM (2)"],
-// //     ["SOFT5", "SOFT (5)"],
-// //     ["SOFT6", "SOFT (6)"],
-// //     ["SOFT7", "SOFT (7)"],
-// //     ["HVY8", "HEAVY (8)"],
-// //     ["HVY9", "HEAVY (9)"],
-// //     ["HVY10", "HEAVY (10)"],
-// //     ["SYNTHETIC", "Synthetic"],
-// //     ["UNKNOWN", "Unknown"]
-// //   ]);
+// export const formatTrackCondition = (meetRaces: MeetInfo) => {
+//   if (!meetRaces.trackCondition) return;
+//   const LookupMap: Map<string, string> = new Map([
+//     ["GOOD", "GOOD"],
+//     ["GOOD3", "GOOD (3)"],
+//     ["GOOD4", "GOOD (4)"],
+//     ["FIRM1", "FIRM (1)"],
+//     ["FIRM2", "FIRM (2)"],
+//     ["SOFT5", "SOFT (5)"],
+//     ["SOFT6", "SOFT (6)"],
+//     ["SOFT7", "SOFT (7)"],
+//     ["HVY8", "HEAVY (8)"],
+//     ["HVY9", "HEAVY (9)"],
+//     ["HVY10", "HEAVY (10)"],
+//     ["SYNTHETIC", "Synthetic"],
+//     ["UNKNOWN", "Unknown"]
+//   ]);
 // //   return LookupMap.get(meetRaces.trackCondition.toUpperCase());
 // // };
 // export const formatOrdinals = (n: number) => {

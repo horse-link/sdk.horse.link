@@ -23,35 +23,35 @@ export const formatToFourDecimalsRaw = (amount: string) => {
   return parsedAmount.toFixed(4);
 };
 
-// export const formatToTwoDecimals = (amount: string) => {
-//   const parsedAmount = parseFloat(amount);
-//   const roundedToTwoDecimals = parsedAmount.toFixed(2);
-//   return roundedToTwoDecimals;
-// };
+export const formatToTwoDecimals = (amount: string) => {
+  const parsedAmount = parseFloat(amount);
+  const roundedToTwoDecimals = parsedAmount.toFixed(2);
+  return roundedToTwoDecimals;
+};
 
-// // add a comma every 3 digits
-// export const formatNumberWithCommas = (amount: string) => {
-//   const parsedAmount = parseFloat(amount);
-//   const formatToFourDecimal = parsedAmount.toFixed(6);
-//   const roundedToFourDecimal = +formatToFourDecimal;
-//   const convertToFourDecimalsWithCommas = roundedToFourDecimal.toLocaleString(
-//     "en-US",
-//     {
-//       maximumFractionDigits: 4,
-//       minimumFractionDigits: 4
-//     }
-//   );
-//   return convertToFourDecimalsWithCommas;
-// };
+// add a comma every 3 digits
+export const formatNumberWithCommas = (amount: string) => {
+  const parsedAmount = parseFloat(amount);
+  const formatToFourDecimal = parsedAmount.toFixed(6);
+  const roundedToFourDecimal = +formatToFourDecimal;
+  const convertToFourDecimalsWithCommas = roundedToFourDecimal.toLocaleString(
+    "en-US",
+    {
+      maximumFractionDigits: 4,
+      minimumFractionDigits: 4
+    }
+  );
+  return convertToFourDecimalsWithCommas;
+};
 
-// export const shortenAddress = (address: string) =>
-//   `${address.slice(0, 5)}...${address.slice(address.length - 5)}`;
+export const shortenAddress = (address: string) =>
+  `${address.slice(0, 5)}...${address.slice(address.length - 5)}`;
 
-// export const shortenHash = (hash: string) => {
-//   const start = hash.substring(0, 15);
-//   const end = hash.substring(hash.length - 15, hash.length);
-//   return `${start}...${end}`;
-// };
+export const shortenHash = (hash: string) => {
+  const start = hash.substring(0, 15);
+  const end = hash.substring(hash.length - 15, hash.length);
+  return `${start}...${end}`;
+};
 
 // // Derived from EthersJS version for Bytes32
 // export const formatBytes16String = (text: string) => {
@@ -85,8 +85,8 @@ export const formatToFourDecimalsRaw = (amount: string) => {
 //   return ethers.utils.toUtf8String(data.slice(0, nullTermination));
 // };
 
-// export const formatFirstLetterCapitalised = (string: string) =>
-//   `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;
+export const formatFirstLetterCapitalised = (string: string) =>
+  `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;
 
 // // Deprecated
 // export const formatTimeToHMS = (time: string, shortForm?: boolean) => {
@@ -137,24 +137,24 @@ export const formatToFourDecimalsRaw = (amount: string) => {
 //   return `${prefix}${Math.abs(minutes)}m ${Math.abs(seconds)}s`;
 // };
 
-// // export const formatTrackCondition = (meetRaces: MeetInfo) => {
-// //   if (!meetRaces.trackCondition) return;
+// export const formatTrackCondition = (meetRaces: MeetInfo) => {
+//   if (!meetRaces.trackCondition) return;
 
-// //   const LookupMap: Map<string, string> = new Map([
-// //     ["GOOD", "GOOD"],
-// //     ["GOOD3", "GOOD (3)"],
-// //     ["GOOD4", "GOOD (4)"],
-// //     ["FIRM1", "FIRM (1)"],
-// //     ["FIRM2", "FIRM (2)"],
-// //     ["SOFT5", "SOFT (5)"],
-// //     ["SOFT6", "SOFT (6)"],
-// //     ["SOFT7", "SOFT (7)"],
-// //     ["HVY8", "HEAVY (8)"],
-// //     ["HVY9", "HEAVY (9)"],
-// //     ["HVY10", "HEAVY (10)"],
-// //     ["SYNTHETIC", "Synthetic"],
-// //     ["UNKNOWN", "Unknown"]
-// //   ]);
+//   const LookupMap: Map<string, string> = new Map([
+//     ["GOOD", "GOOD"],
+//     ["GOOD3", "GOOD (3)"],
+//     ["GOOD4", "GOOD (4)"],
+//     ["FIRM1", "FIRM (1)"],
+//     ["FIRM2", "FIRM (2)"],
+//     ["SOFT5", "SOFT (5)"],
+//     ["SOFT6", "SOFT (6)"],
+//     ["SOFT7", "SOFT (7)"],
+//     ["HVY8", "HEAVY (8)"],
+//     ["HVY9", "HEAVY (9)"],
+//     ["HVY10", "HEAVY (10)"],
+//     ["SYNTHETIC", "Synthetic"],
+//     ["UNKNOWN", "Unknown"]
+//   ]);
 
 // //   return LookupMap.get(meetRaces.trackCondition.toUpperCase());
 // // };

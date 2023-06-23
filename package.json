@@ -1,6 +1,6 @@
 {
   "name": "sdk.horse.link",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@github.com:horse-link/sdk.horse.link.git",
   "author": "Horse Link <admin@horse.link>",
