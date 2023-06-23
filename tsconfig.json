@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+      "incremental": true,
+      "target": "ESNext",
+      "module": "commonjs",
+      "outDir": "build",
+  
+      "strict": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "strictPropertyInitialization": false,
+      "strictFunctionTypes": true,
+      "strictBindCallApply": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+  
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+  
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+  
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+  
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": ["./src/**/*"]
+  }
+  
