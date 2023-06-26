@@ -6,7 +6,7 @@
 // // import { Chain } from "wagmi";
 // // import { VaultTransaction } from "../types/vaults";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatOrdinals = exports.formatFirstLetterCapitalised = exports.shortenHash = exports.shortenAddress = exports.formatNumberWithCommas = exports.formatToTwoDecimals = exports.formatToFourDecimalsRaw = exports.formatToFourDecimals = void 0;
+exports.formatFirstLetterCapitalised = exports.shortenHash = exports.shortenAddress = exports.formatNumberWithCommas = exports.formatToTwoDecimals = exports.formatToFourDecimalsRaw = exports.formatToFourDecimals = void 0;
 const formatToFourDecimals = (amount) => {
     const parsedAmount = parseFloat(amount);
     if (parsedAmount === 0)
@@ -137,19 +137,18 @@ exports.formatFirstLetterCapitalised = formatFirstLetterCapitalised;
 //   ]);
 // //   return LookupMap.get(meetRaces.trackCondition.toUpperCase());
 // // };
-const formatOrdinals = (n) => {
-    const pr = new Intl.PluralRules("en-US", { type: "ordinal" });
-    const suffixes = new Map([
-        ["one", "st"],
-        ["two", "nd"],
-        ["few", "rd"],
-        ["other", "th"]
-    ]);
-    const rule = pr.select(n);
-    const suffix = suffixes.get(rule);
-    return `${n}${suffix}`;
-};
-exports.formatOrdinals = formatOrdinals;
+// export const formatOrdinals = (n: number) => {
+//   const pr = new Intl.PluralRules("en-US", { type: "ordinal" });
+//   const suffixes = new Map([
+//     ["one", "st"],
+//     ["two", "nd"],
+//     ["few", "rd"],
+//     ["other", "th"]
+//   ]);
+//   const rule = pr.select(n);
+//   const suffix = suffixes.get(rule);
+//   return `${n}${suffix}`;
+// };
 // // export const formatChain = (chain: Chain): Chain => ({
 // //   ...chain,
 // //   // take out spaces and capitals

@@ -14,5 +14,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./formatting"), exports);
+exports.formatToFourDecimals = void 0;
+var formatting_1 = require("./formatting");
+Object.defineProperty(exports, "formatToFourDecimals", { enumerable: true, get: function () { return formatting_1.formatToFourDecimals; } });
 __exportStar(require("./utils"), exports);
