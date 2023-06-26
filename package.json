@@ -1,28 +1,27 @@
 {
   "name": "horselink-sdk",
   "version": "1.0.4",
-  "main": "/dist/index.js",
-  "types": "/dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "description": "Horse Link SDK",
-  "files": [
-    "/dist"
-  ],
   "repository": "git@github.com:horse-link/sdk.horse.link.git",
   "author": "Horse Link <admin@horse.link>",
   "license": "CC0-1.0",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.1",
+    "@types/jest": "^29.5.2",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
     "typescript": "^5.1.3"
   },
   "dependencies": {
-    "@types/mocha": "^10.0.1",
     "dayjs": "^1.11.8",
     "ethers": "^5.7.2",
-    "mocha": "^10.2.0",
     "prettier": "^2.8.8",
     "ts-node": "^10.9.1"
   }

@@ -1,2 +1,7 @@
-export * from "./formatting";
-export * from "./utils";
+import utils from "./utils";
+
+const HorseLinkSDK = {
+  utils
+};
+
+export default HorseLinkSDK;
