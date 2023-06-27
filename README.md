@@ -1,1 +1,1 @@
-# sdk.horse.link
+# HorseLink SDK

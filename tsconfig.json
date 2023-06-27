@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
       "incremental": true,
-      "target": "ES2015",
-      "module": "commonjs",
+      "target": "ESNext",
+      "module": "ESNext",
       "outDir": "dist",
       "declaration": true,
       "strict": true,
@@ -28,7 +28,6 @@
   
       "forceConsistentCasingInFileNames": true
     },
-    "include": ["./src/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "include": ["./src/**/*"]
   }
   
