@@ -80,7 +80,7 @@ const ethersErrorLookup: Record<ethers.errors, string> = {
   [ethers.errors.TRANSACTION_REPLACED]: DEFAULT_BLOCKCHAIN_ERROR
 };
 
-export const getMeaningfulMessage = (error: any) => {
+export const getMeaningfulMessage = (error: any): string => {
   console.error(error);
   const stringified = JSON.stringify(error.message).toLowerCase();
   const contractError = Object.keys(contractErrorLookup).find(key =>
