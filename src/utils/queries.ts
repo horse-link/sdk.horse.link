@@ -2,7 +2,7 @@
 // import { SubgraphFilter } from "../types/subgraph";
 // import constants from "../constants";
 
-// const getFiltersFromObject = (filter?: SubgraphFilter) => {
+// const getFiltersFromObject = (filter?: SubgraphFilter): string => {
 //   if (!filter) return "";
 
 //   return Object.entries(filter)
@@ -19,7 +19,7 @@
 //     .join("\n");
 // };
 
-// const getOptionalFilterOptions = (now: number, filter?: BetFilterOptions) => {
+// const getOptionalFilterOptions = (now: number, filter?: BetFilterOptions): string => {
 //   switch (filter) {
 //     case "ALL_BETS":
 //       return "";
@@ -45,7 +45,7 @@
 //   filter?: SubgraphFilter,
 //   statusFilter: BetFilterOptions = "ALL_BETS",
 //   skipMultiplier = 0
-// ) => `query GetBets{
+// ): string => `query GetBets{
 //   bets(
 //     first: ${constants.subgraph.MAX_BET_ENTITIES}
 //     skip: ${constants.subgraph.MAX_BET_ENTITIES * skipMultiplier}
@@ -80,7 +80,7 @@
 //   now: number,
 //   filter?: SubgraphFilter,
 //   statusFilter: BetFilterOptions = "ALL_BETS"
-// ) => `query GetBetsWithoutPagination{
+// ): string => `query GetBetsWithoutPagination{
 //   bets(
 //     first: 1000
 //     where: {
@@ -111,7 +111,7 @@
 
 // export const getDepositsWithoutPagination = (
 //   filter?: SubgraphFilter
-// ) => `query getDeposits{
+// ): string => `query getDeposits{
 //   vaultTransactions(
 //     first: 1000
 //     where: {
@@ -132,7 +132,7 @@
 
 // export const getWithdrawsWithoutPagination = (
 //   filter?: SubgraphFilter
-// ) => `query getWithdraws{
+// ): string => `query getWithdraws{
 //   vaultTransactions(
 //     first: 1000
 //     where: {
@@ -151,7 +151,7 @@
 //   }
 // }`;
 
-// export const getVaultHistory = () => `query getVaultHistory{
+// export const getVaultHistory = (): string => `query getVaultHistory{
 //   withdraws: vaultTransactions(
 //     where: {
 //       type: "withdraw"
