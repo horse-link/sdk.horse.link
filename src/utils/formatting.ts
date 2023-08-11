@@ -5,7 +5,7 @@
 // // import { Chain } from "wagmi";
 // // import { VaultTransaction } from "../types/vaults";
 
-export const formatToFourDecimals = (amount: string) => {
+export const formatToFourDecimals = (amount: string): string => {
   const parsedAmount = parseFloat(amount);
   if (parsedAmount === 0) return "0.0000";
   if (parsedAmount < 0.0001) return "<0.0001";
@@ -15,7 +15,7 @@ export const formatToFourDecimals = (amount: string) => {
 };
 
 // returns four decimals without special formatting
-export const formatToFourDecimalsRaw = (amount: string) => {
+export const formatToFourDecimalsRaw = (amount: string): string => {
   const parsedAmount = parseFloat(amount);
   // parsedAmount === 0
   if (!parsedAmount) return "0.0000";
@@ -23,14 +23,14 @@ export const formatToFourDecimalsRaw = (amount: string) => {
   return parsedAmount.toFixed(4);
 };
 
-export const formatToTwoDecimals = (amount: string) => {
+export const formatToTwoDecimals = (amount: string): string => {
   const parsedAmount = parseFloat(amount);
   const roundedToTwoDecimals = parsedAmount.toFixed(2);
   return roundedToTwoDecimals;
 };
 
 // add a comma every 3 digits
-export const formatNumberWithCommas = (amount: string) => {
+export const formatNumberWithCommas = (amount: string): string => {
   const parsedAmount = parseFloat(amount);
   const formatToFourDecimal = parsedAmount.toFixed(6);
   const roundedToFourDecimal = +formatToFourDecimal;
@@ -44,17 +44,17 @@ export const formatNumberWithCommas = (amount: string) => {
   return convertToFourDecimalsWithCommas;
 };
 
-export const shortenAddress = (address: string) =>
+export const shortenAddress = (address: string): string =>
   `${address.slice(0, 5)}...${address.slice(address.length - 5)}`;
 
-export const shortenHash = (hash: string) => {
+export const shortenHash = (hash: string): string => {
   const start = hash.substring(0, 15);
   const end = hash.substring(hash.length - 15, hash.length);
   return `${start}...${end}`;
 };
 
 // // Derived from EthersJS version for Bytes32
-// export const formatBytes16String = (text: string) => {
+// export const formatBytes16String = (text: string): string => {
 //   // Get the bytes
 //   const bytes = ethers.utils.toUtf8Bytes(text);
 
@@ -69,7 +69,7 @@ export const shortenHash = (hash: string) => {
 // };
 
 // // Derived from EthersJS version for Bytes32
-// export const parseBytes16String = (bytes: ethers.BytesLike) => {
+// export const parseBytes16String = (bytes: ethers.BytesLike): string => {
 //   const data = ethers.utils.arrayify(bytes);
 
 //   // Must be 16 bytes with a null-termination
@@ -85,7 +85,7 @@ export const shortenHash = (hash: string) => {
 //   return ethers.utils.toUtf8String(data.slice(0, nullTermination));
 // };
 
-export const formatFirstLetterCapitalised = (string: string) =>
+export const formatFirstLetterCapitalised = (string: string): string =>
   `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;
 
 // // Deprecated
@@ -100,7 +100,7 @@ export const formatFirstLetterCapitalised = (string: string) =>
 //   now: dayjs.Dayjs,
 //   time: string,
 //   shortForm?: boolean
-// ) => {
+// ): string => {
 //   const date = dayjs(time);
 
 //   const isNegative = now > date;
@@ -137,7 +137,7 @@ export const formatFirstLetterCapitalised = (string: string) =>
 //   return `${prefix}${Math.abs(minutes)}m ${Math.abs(seconds)}s`;
 // };
 
-// export const formatTrackCondition = (meetRaces: MeetInfo) => {
+// export const formatTrackCondition = (meetRaces: MeetInfo): string | undefined => {
 //   if (!meetRaces.trackCondition) return;
 
 //   const LookupMap: Map<string, string> = new Map([
@@ -159,7 +159,7 @@ export const formatFirstLetterCapitalised = (string: string) =>
 // //   return LookupMap.get(meetRaces.trackCondition.toUpperCase());
 // // };
 
-// export const formatOrdinals = (n: number) => {
+// export const formatOrdinals = (n: number): string => {
 //   const pr = new Intl.PluralRules("en-US", { type: "ordinal" });
 
 //   const suffixes = new Map([
