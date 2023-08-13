@@ -89,7 +89,7 @@ export const formatFirstLetterCapitalised = (string: string): string =>
   `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;
 
 // // Deprecated
-// export const formatTimeToHMS = (time: string, shortForm?: boolean) => {
+// export const formatTimeToHMS = (time: string, shortForm?: boolean): string => {
 //   const now = dayjs();
 
 //   // time is less than 5 mins
@@ -137,8 +137,10 @@ export const formatFirstLetterCapitalised = (string: string): string =>
 //   return `${prefix}${Math.abs(minutes)}m ${Math.abs(seconds)}s`;
 // };
 
-// export const formatTrackCondition = (meetRaces: MeetInfo): string | undefined => {
-//   if (!meetRaces.trackCondition) return;
+// export const formatTrackCondition = (meetRaces: MeetInfo): string => {
+//   if (!meetRaces.trackCondition) {
+//     throw new Error("Track condition is not available");
+//   }
 
 //   const LookupMap: Map<string, string> = new Map([
 //     ["GOOD", "GOOD"],
@@ -156,8 +158,15 @@ export const formatFirstLetterCapitalised = (string: string): string =>
 //     ["UNKNOWN", "Unknown"]
 //   ]);
 
-// //   return LookupMap.get(meetRaces.trackCondition.toUpperCase());
-// // };
+//   const trackCondition = meetRaces.trackCondition.toUpperCase();
+//   const formattedCondition = LookupMap.get(trackCondition);
+
+//   if (!formattedCondition) {
+//     throw new Error(`Unknown track condition: ${trackCondition}`);
+//   }
+
+//   return formattedCondition;
+// };
 
 // export const formatOrdinals = (n: number): string => {
 //   const pr = new Intl.PluralRules("en-US", { type: "ordinal" });
