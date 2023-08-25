@@ -11,7 +11,14 @@ export const getTokenFromSymbol = (symbol: string, config?: Config): Token => {
     throw new Error(`Token with symbol ${symbol} not found`);
   }
 
-  return foundToken;
+  const token: Token = {
+    address: foundToken.address,
+    decimals: foundToken.decimals.toString(),
+    symbol: foundToken.symbol,
+    name: foundToken.name
+  };
+  
+  return token;
 };
 
 export const isUsdt = (address: string, config?: Config): boolean => {
