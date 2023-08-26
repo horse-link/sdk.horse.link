@@ -3,6 +3,20 @@ import { BigNumber } from "ethers";
 // import { Address } from "abitype";
 import { TokenInfo } from "./tokens";
 
+export type VaultStats = {
+  vaultBalance: string;
+  userBalance: string;
+  performance: string;
+  asset: string;
+};
+
+export enum VaultTransactionType {
+  DEPOSIT = "deposit",
+  WITHDRAW = "withdraw",
+  BORROW = "borrow",
+  REPAY = "repay"
+}
+
 export type Vault = {
   name: string;
   symbol: string;
@@ -15,13 +29,6 @@ export type VaultUserData = {
   userShareBalance: BigNumber;
   userAssetBalance: BigNumber;
 };
-
-export enum VaultTransactionType {
-  DEPOSIT = "deposit",
-  WITHDRAW = "withdraw",
-  BORROW = "borrow",
-  REPAY = "repay"
-}
 
 export type VaultModalState = {
   type: VaultTransactionType;
