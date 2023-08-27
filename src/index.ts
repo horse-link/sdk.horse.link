@@ -1,4 +1,5 @@
 export * from "./types/config";
+export * from "./types/bets";
 export * from "./types/general";
 export * from "./types/markets";
 export * from "./types/meets";
