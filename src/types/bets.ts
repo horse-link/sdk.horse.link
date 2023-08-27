@@ -1,3 +1,5 @@
+export type BetResult = "WIN" | "LOSE" | "PENDING";
+
 export type BetStatus =
   | "RESULTED"
   | "PENDING"
@@ -6,7 +8,6 @@ export type BetStatus =
   | "INVALID"
   | "REFUNDED";
 
-// TODO MOVE TO SDK
 // "#",
 // "Punter",
 // "Amount",
