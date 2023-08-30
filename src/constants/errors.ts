@@ -81,7 +81,6 @@ const ethersErrorLookup: Record<ethers.errors, string> = {
 };
 
 export const getMeaningfulMessage = (error: any): string => {
-  console.error(error);
   const stringified = JSON.stringify(error.message).toLowerCase();
   const contractError = Object.keys(contractErrorLookup).find(key =>
     stringified.includes(key.toLowerCase())

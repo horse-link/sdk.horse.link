@@ -1,4 +1,4 @@
-import * as errors from "./errors";
+import * as errors from "../constants/errors";
 import * as formatting from "./formatting";
 import * as general from "./general";
 

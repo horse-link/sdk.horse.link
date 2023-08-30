@@ -5,5 +5,6 @@ export * from "./types/markets";
 export * from "./types/meets";
 export * from "./types/stats";
 export * from "./types/tokens";
-export * from "./utils/formatting";
 export * from "./types/vaults";
+export * from "./utils/formatting";
+export * from "./utils/general";
