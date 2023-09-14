@@ -1,4 +1,8 @@
-export type BetResult = "WIN" | "LOSE" | "PENDING";
+export enum BetResult {
+  WIN = "WIN",
+  LOSE = "LOSE",
+  PENDING = "PENDING"
+}
 
 export type BetStatus =
   | "RESULTED"
