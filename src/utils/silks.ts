@@ -3,6 +3,7 @@ import { JACKET_MARKINGS, Silk } from "../types/runner";
 export const parseSilkUrl = (url: string): Silk => {
     // ROYAL%20BLUE%2C%20YELLOW%20SASH%2C%C2%A0RED%C2%A0CAP
 
+    // mnemonic
     const parts = url.split("%20");
 
     const silk: Silk = {
