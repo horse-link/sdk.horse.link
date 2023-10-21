@@ -22,3 +22,10 @@ export type MarketHistory = {
   type: MarketHistoryType;
   createdAt: number;
 };
+
+export type MarketDetails = {
+  date: number,
+  location: string,
+  locationCode: string,
+  raceNumber: string
+};

@@ -1,6 +1,5 @@
-import dayjs from "dayjs";
-import { RaceStatus } from "../constants/status";
 import { EcSignature, SignedResponse } from "./general";
+import { Race, RaceInfo } from "./race";
 
 export type Runner = {
   number: number;
@@ -10,12 +9,18 @@ export type Runner = {
   close: number;
   end: number;
   odds: number;
+  win: number;
+  place: number;
   handicapWeight: number;
   last5Starts: string;
   proposition_id: string;
   barrier: number;
   signature: EcSignature;
+  win_signature: EcSignature;
+  place_signature: EcSignature;
   status: RunnerStatus;
+  backed: number;
+  percentage: number;
 };
 
 export type RunnerStatus = "Open" | "Scratched" | "LateScratched";
@@ -34,49 +39,21 @@ export type NextToJumpRace = {
 export type NextToJump = {
   races: NextToJumpRace[];
   missingLocations: string[];
-};
-
-export type Race = {
-  number: number;
-  name: string;
-  start?: string;
-  start_unix?: number;
-  end?: string;
-  end_unix?: number;
-  close?: string;
-  close_unix?: number;
-  status: RaceStatus;
-  results?: number[];
-};
-
-export type RaceData = {
-  raceData: {
-    name: string;
-    distance: number;
-    class: string;
-    hasOdds: boolean;
-    start: dayjs.Dayjs;
-    close: number;
-    end: number;
-  };
-  track: {
-    name: string;
-    code: string;
-  };
-  runners: Runner[];
+  errors?: unknown[];
 };
 
 export type SignedRunnersResponse = {
   data: {
-    raceData: {
-      name: string;
-      distance: number;
-      class: string;
-      hasOdds: boolean;
-      start: dayjs.Dayjs;
-      close: number;
-      end: number;
-    };
+    raceData: Race;
+    // raceData: {
+    //   name: string;
+    //   distance: number;
+    //   class: string;
+    //   hasOdds: boolean;
+    //   start: dayjs.Dayjs;
+    //   close: number;
+    //   end: number;
+    // };
     track: {
       name: string;
       code: string;
@@ -117,23 +94,20 @@ export type MeetInfo = {
   raceInfo: RaceInfo[];
 };
 
-export type RaceInfo = {
-  raceNumber: number;
-  raceName: string;
-  raceClassConditions: string;
-  raceDistance: number;
-  raceStartTime: string;
-  raceStatus: RaceStatus;
-};
-
 export type Back = {
   nonce: string;
   market_id: string;
   close: number;
   end: number;
-  odds: number;
-  proposition_id: string;
-  signature: EcSignature;
+  odds: number; // remove
+  win: number;
+  place: number;
+  proposition_id: string; // remove
+  win_proposition_id: string;
+  place_proposition_id: string;
+  signature: EcSignature; // remove
+  win_signature: EcSignature;
+  place_signature: EcSignature;
 };
 
 // The parameters for a call to back() on the Market contract.

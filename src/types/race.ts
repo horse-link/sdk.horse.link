@@ -1,4 +1,4 @@
-// import { RunnerDTO } from "./runner";
+import { RaceStatus } from "../constants/status";
 
 export type RaceResult = {
   marketId: string;
@@ -13,18 +13,48 @@ export type Track = {
   code: string;
 };
 
-export type RaceData = {
+// export type RaceData = {
+//   name: string;
+//   distance: string;
+//   class: string;
+//   hasOdds: boolean;
+//   start: number;
+//   close: number;
+//   end: number;
+// };
+
+export type Race = {
+  number: number;
   name: string;
-  distance: string;
-  class: string;
+  start?: string;
+  start_unix?: number;
+  end?: string;
+  end_unix?: number;
+  close?: string;
+  close_unix?: number;
+  status: RaceStatus;
   hasOdds: boolean;
-  start: number;
-  close: number;
-  end: number;
 };
 
+export type RaceWithResults = Race & {
+  results?: number[];
+};
+
+// export type RaceDTO = {
+//   number: number;
+//   name: string;
+//   start: string;
+//   start_unix: number;
+//   end: string;
+//   end_unix: number;
+//   close: string;
+//   close_unix: number;
+//   status: string;
+//   results: any;
+// };
+
 export type RaceDataResponse = {
-  raceData: RaceData;
+  raceData: Race;
   track: Track;
   runners: any;
 };
@@ -36,17 +66,4 @@ export type RaceInfo = {
   raceDistance: number;
   raceStartTime: string;
   raceStatus: string;
-};
-
-export type RaceDTO = {
-  number: number;
-  name: string;
-  start: string;
-  start_unix: number;
-  end: string;
-  end_unix: number;
-  close: string;
-  close_unix: number;
-  status: string;
-  results: any;
 };

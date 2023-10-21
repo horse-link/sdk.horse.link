@@ -1,4 +1,4 @@
-import { RaceData, Track } from "./race";
+import { Race, Track } from "./race";
 
 export type RunnerDTO = {
   nonce: string;
@@ -23,7 +23,7 @@ export type RunnersResponse = {
   owner: string;
   data: {
     runners: any;
-    raceData: RaceData;
+    raceData: Race;
     track: Track;
   };
   signature: string;
