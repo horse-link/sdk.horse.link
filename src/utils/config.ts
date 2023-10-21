@@ -1,6 +1,6 @@
-import { Config, MarketInfo } from "../types/config";
-import { Token } from "../types/tokens";
-import { VaultInfo } from "../types/vaults";
+import { Config, MarketInfo } from "../types/";
+import { Token } from "../types/";
+import { VaultInfo } from "../types/";
 
 export const getTokenFromSymbol = (symbol: string, config?: Config): Token => {
   const foundToken = config?.tokens.find(

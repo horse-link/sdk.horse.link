@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { ethers } from "ethers";
-import { MarketDetails } from "../types/markets";
+import { MarketDetails } from "../types/";
 
 const MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
 const TAB_TIMEZONE_OFFSET = 10 * 60 * 60 * 1000; // GMT +10, not daylight savings

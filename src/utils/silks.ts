@@ -1,4 +1,4 @@
-import { JACKET_MARKINGS, Silk } from "../types/runner";
+import { JACKET_MARKINGS, Silk } from "../types/";
 
 export const parseSilkUrl = (url: string): Silk => {
     // ROYAL%20BLUE%2C%20YELLOW%20SASH%2C%C2%A0RED%C2%A0CAP
