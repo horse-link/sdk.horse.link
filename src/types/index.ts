@@ -77,8 +77,8 @@ export type EcSignature = {
 
 export type SignedResponse = {
   owner: string;
+  hash: string;
   signature: string;
-  // hash: string;
 };
 
 export type Signature = {
@@ -167,26 +167,6 @@ export type NextToJump = {
   missingLocations: string[];
   errors?: unknown[];
 };
-
-export type SignedRunnersResponse = {
-  data: {
-    raceData: Race;
-    // raceData: {
-    //   name: string;
-    //   distance: number;
-    //   class: string;
-    //   hasOdds: boolean;
-    //   start: dayjs.Dayjs;
-    //   close: number;
-    //   end: number;
-    // };
-    track: {
-      name: string;
-      code: string;
-    };
-    runners: Runner[];
-  };
-} & SignedResponse;
 
 export type SignedMeetingsResponse = {
   data: MeetResponse;
@@ -300,7 +280,7 @@ export type RaceWithResults = Race & {
   results?: number[];
 };
 
-export type RaceDataResponse = {
+export type RaceData = {
   raceData: Race;
   track: Track;
   runners: any;
@@ -313,37 +293,14 @@ export type RaceInfo = {
   raceDistance: number;
   raceStartTime: string;
   raceStatus: string;
-};
-
-export type RunnerDTO = {
-  nonce: string;
-  number: number;
-  name: string;
-  market_id: string;
-  close: number;
-  end: number;
-  odds: number;
-  originalOdds: string;
-  last5Starts: string;
-  handicapWeight: number;
-  proposition_id: string;
-  signature: any;
-  barrier: number;
-  status: string;
-  backed: number;
-  percentage: number;
-};
+}; 
 
 export type RunnersResponse = {
   owner: string;
-  data: {
-    runners: any;
-    raceData: Race;
-    track: Track;
-  };
-  signature: string;
-  hash: string;
+  data: RaceData;
 };
+
+export type SignedRunnersResponse = RunnersResponse & SignedResponse;
 
 export enum JACKET_MARKINGS {
   QUARTERS = "QUARTERS",
