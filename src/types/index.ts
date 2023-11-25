@@ -134,7 +134,6 @@ export type Runner = {
   market_id: string;
   close: number;
   end: number;
-  // odds: number;
   win: number;
   place: number;
   handicapWeight: number;
@@ -263,10 +262,6 @@ export type RaceData = {
 export type RaceDataResponse = {
   race: Race;
   track: Track;
-  // track: {
-  //   name: raceData.meeting.meetingName,
-  //   code: raceData.meeting.venueMnemonic
-  // },
   runners: Runner[];
 };
 
