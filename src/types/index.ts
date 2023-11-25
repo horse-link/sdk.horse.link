@@ -255,7 +255,7 @@ export type Track = {
 
 // Remove
 export type RaceData = {
-  raceData: Race;
+  race: Race;
   track: Track;
   runners: any;
 };
@@ -299,7 +299,7 @@ export type RaceInfo = {
 
 export type RunnersResponse = {
   owner: string;
-  data: RaceData;
+  raceData: RaceData;
 };
 
 export type SignedRunnersResponse = RunnersResponse & SignedResponse;
