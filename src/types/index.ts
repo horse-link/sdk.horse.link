@@ -128,13 +128,13 @@ export type Meeting = {
 };
 
 export type Runner = {
+  nonce: string;
   number: number;
   name: string;
-  nonce: string;
   market_id: string;
   close: number;
   end: number;
-  odds: number;
+  // odds: number;
   win: number;
   place: number;
   handicapWeight: number;
@@ -145,6 +145,7 @@ export type Runner = {
   win_signature: EcSignature;
   place_signature: EcSignature;
   status: RunnerStatus;
+  rider: string;
   backed: number;
   percentage: number;
 };
@@ -252,15 +253,22 @@ export type Track = {
   code: string;
 };
 
-// export type RaceData = {
-//   name: string;
-//   distance: string;
-//   class: string;
-//   hasOdds: boolean;
-//   start: number;
-//   close: number;
-//   end: number;
-// };
+// Remove
+export type RaceData = {
+  raceData: Race;
+  track: Track;
+  runners: any;
+};
+
+export type RaceDataResponse = {
+  race: Race;
+  track: Track;
+  // track: {
+  //   name: raceData.meeting.meetingName,
+  //   code: raceData.meeting.venueMnemonic
+  // },
+  runners: Runner[];
+};
 
 export type Race = {
   number: number;
@@ -280,12 +288,6 @@ export type RaceWithResults = Race & {
   results?: number[];
 };
 
-export type RaceData = {
-  raceData: Race;
-  track: Track;
-  runners: any;
-};
-
 export type RaceInfo = {
   raceNumber: number;
   raceName: string;
@@ -293,7 +295,7 @@ export type RaceInfo = {
   raceDistance: number;
   raceStartTime: string;
   raceStatus: string;
-}; 
+};
 
 export type RunnersResponse = {
   owner: string;
