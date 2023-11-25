@@ -230,10 +230,7 @@ export type WinningHorse = {
 };
 
 export type MeetResults = {
-  track: {
-    name: string;
-    code: string;
-  };
+  track: Track;
   winningHorses: WinningHorse[];
 };
 
