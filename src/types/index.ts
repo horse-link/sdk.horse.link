@@ -1,5 +1,13 @@
 import { BigNumber } from "ethers";
-import { RaceStatus } from "../constants/status";
+// import { RaceStatus } from "../constants";
+
+export enum RaceStatus {
+  INTERIM = "Interim",
+  ABANDONED = "Abandoned",
+  CLOSED = "Closed",
+  NORMAL = "Normal",
+  PAYING = "Paying"
+}
 
 export enum BetResult {
   WIN = "WIN",
