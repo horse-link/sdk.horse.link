@@ -1,3 +1,5 @@
+import { ethers } from "ethers";
+
 export const formatToFourDecimals = (amount: string): string => {
   const parsedAmount = parseFloat(amount);
   if (parsedAmount === 0) return "0.0000";
@@ -46,37 +48,37 @@ export const shortenHash = (hash: string): string => {
   return `${start}...${end}`;
 };
 
-// // Derived from EthersJS version for Bytes32
-// export const formatBytes16String = (text: string): string => {
-//   // Get the bytes
-//   const bytes = ethers.utils.toUtf8Bytes(text);
+// Derived from EthersJS version for Bytes32
+export const formatBytes16String = (text: string): string => {
+  // Get the bytes
+  const bytes = ethers.utils.toUtf8Bytes(text);
 
-//   // Check we have room for null-termination
-//   if (bytes.length > 15)
-//     throw new Error("bytes16 string must be less than 16 bytes");
+  // Check we have room for null-termination
+  if (bytes.length > 15)
+    throw new Error("bytes16 string must be less than 16 bytes");
 
-//   // Zero-pad (implicitly null-terminates)
-//   return ethers.utils.hexlify(
-//     ethers.utils.concat([bytes, ethers.constants.HashZero]).slice(0, 16)
-//   );
-// };
+  // Zero-pad (implicitly null-terminates)
+  return ethers.utils.hexlify(
+    ethers.utils.concat([bytes, ethers.constants.HashZero]).slice(0, 16)
+  );
+};
 
-// // Derived from EthersJS version for Bytes32
-// export const parseBytes16String = (bytes: ethers.BytesLike): string => {
-//   const data = ethers.utils.arrayify(bytes);
+// Derived from EthersJS version for Bytes32
+export const parseBytes16String = (bytes: ethers.BytesLike): string => {
+  const data = ethers.utils.arrayify(bytes);
 
-//   // Must be 16 bytes with a null-termination
-//   if (data.length !== 16)
-//     throw new Error("invalid bytes16 - not 16 bytes long");
-//   if (data[15] !== 0)
-//     throw new Error("invalid bytes16 string - no null terminator");
+  // Must be 16 bytes with a null-termination
+  if (data.length !== 16)
+    throw new Error("invalid bytes16 - not 16 bytes long");
+  if (data[15] !== 0)
+    throw new Error("invalid bytes16 string - no null terminator");
 
-//   // Find the null termination
-//   const nullTermination = data.indexOf(0);
+  // Find the null termination
+  const nullTermination = data.indexOf(0);
 
-//   // Determine the string value
-//   return ethers.utils.toUtf8String(data.slice(0, nullTermination));
-// };
+  // Determine the string value
+  return ethers.utils.toUtf8String(data.slice(0, nullTermination));
+};
 
 export const formatFirstLetterCapitalised = (string: string): string =>
   `${string.charAt(0).toUpperCase()}${string.slice(1).toLowerCase()}`;

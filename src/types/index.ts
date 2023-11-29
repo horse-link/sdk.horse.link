@@ -1,5 +1,13 @@
 import { BigNumber } from "ethers";
-import { RaceStatus } from "../constants/status";
+// import { RaceStatus } from "../constants";
+
+export enum RaceStatus {
+  INTERIM = "Interim",
+  ABANDONED = "Abandoned",
+  CLOSED = "Closed",
+  NORMAL = "Normal",
+  PAYING = "Paying"
+}
 
 export enum BetResult {
   WIN = "WIN",
@@ -128,13 +136,12 @@ export type Meeting = {
 };
 
 export type Runner = {
+  nonce: string;
   number: number;
   name: string;
-  nonce: string;
   market_id: string;
   close: number;
   end: number;
-  odds: number;
   win: number;
   place: number;
   handicapWeight: number;
@@ -145,6 +152,7 @@ export type Runner = {
   win_signature: EcSignature;
   place_signature: EcSignature;
   status: RunnerStatus;
+  rider: string;
   backed: number;
   percentage: number;
 };
@@ -230,10 +238,7 @@ export type WinningHorse = {
 };
 
 export type MeetResults = {
-  track: {
-    name: string;
-    code: string;
-  };
+  track: Track;
   winningHorses: WinningHorse[];
 };
 
@@ -252,15 +257,18 @@ export type Track = {
   code: string;
 };
 
-// export type RaceData = {
-//   name: string;
-//   distance: string;
-//   class: string;
-//   hasOdds: boolean;
-//   start: number;
-//   close: number;
-//   end: number;
-// };
+// Remove
+export type RaceData = {
+  race: Race;
+  track: Track;
+  runners: any;
+};
+
+export type RaceDataResponse = {
+  race: Race;
+  track: Track;
+  runners: Runner[];
+};
 
 export type Race = {
   number: number;
@@ -280,12 +288,6 @@ export type RaceWithResults = Race & {
   results?: number[];
 };
 
-export type RaceData = {
-  raceData: Race;
-  track: Track;
-  runners: any;
-};
-
 export type RaceInfo = {
   raceNumber: number;
   raceName: string;
@@ -293,11 +295,11 @@ export type RaceInfo = {
   raceDistance: number;
   raceStartTime: string;
   raceStatus: string;
-}; 
+};
 
 export type RunnersResponse = {
   owner: string;
-  data: RaceData;
+  raceData: RaceData;
 };
 
 export type SignedRunnersResponse = RunnersResponse & SignedResponse;
