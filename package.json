@@ -1,15 +1,26 @@
 {
   "name": "horselink-sdk",
   "version": "1.0.32",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "type": "module",
   "description": "Horse Link SDK",
   "repository": "git@github.com:horse-link/sdk.horse.link.git",
   "author": "Horse Link <admin@horse.link>",
   "license": "CC0-1.0",
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
+    "default": "./dist/esm/index.js"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc --project tsconfig.cjs.json && node ./postbuild.cjs",
     "test": "jest",
     "format": "prettier --write src",
     "format-staged": "pretty-quick --staged",
@@ -23,6 +34,9 @@
     "pretty-quick": "^3.1.3",
     "ts-jest": "^29.1.0",
     "typescript": "^5.1.3"
+  },
+  "engines": {
+    "node": "^16"
   },
   "dependencies": {
     "dayjs": "^1.11.8",

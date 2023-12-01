@@ -3,8 +3,9 @@
     "incremental": true,
     "target": "ESNext",
     "module": "ESNext",
-    "outDir": "dist",
+    "outDir": "dist/esm",
     "declaration": true,
+    "declarationDir": "dist/types",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -13,15 +14,19 @@
     "strictBindCallApply": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
+
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+
     "forceConsistentCasingInFileNames": true
   },
   "include": ["./src/**/*"]
