@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { ethers } from "ethers";
 
 export const formatToFourDecimals = (amount: string): string => {
@@ -87,4 +88,11 @@ export const bytes16HexToString = (hex: string): string => {
   const s = Buffer.from(hex.slice(2), "hex").toString("utf8").toString();
   // Chop off the trailing 0s
   return s.slice(0, s.indexOf("\0"));
+};
+
+export const formatTimestamp = (timestamp: string | number, format?: string) => {
+  const today = new Date(timestamp).toLocaleString("en-US", {
+    timeZone: "Australia/Brisbane"
+  });
+  return dayjs(today).format(format ?? "YYYY-MM-DD");
 };

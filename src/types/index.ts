@@ -424,3 +424,10 @@ export type VaultInfo = {
   userShareTotal?: BigNumber;
   userSharePercentage?: string;
 };
+
+export type PropostionDetails = {
+  marketId: string,
+  market: MarketDetails,
+  runner: string, // number?
+  place: string // number?
+}

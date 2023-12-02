@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import { ethers } from "ethers";
 import { MarketDetails } from "../types/";
+import { formatTimestamp } from "./formatting";
 
 const MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
 const TAB_TIMEZONE_OFFSET = 10 * 60 * 60 * 1000; // GMT +10, not daylight savings
@@ -95,4 +96,8 @@ export const rehydratePropositionIdWithMarket = async (propositionId: string, ma
     runner,
     place
   };
+};
+
+export const getToday = (): string => {
+  return formatTimestamp(new Date().getTime());
 };

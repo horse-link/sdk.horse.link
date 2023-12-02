@@ -7,7 +7,6 @@ import * as time from "./time";
 // import * as subgraph from "./subgraph";
 // import * as wagmi from "./wagmi";
 
-
 const constants = {
   // blockchain,
   time,
