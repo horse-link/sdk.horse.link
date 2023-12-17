@@ -1,6 +1,6 @@
 {
   "name": "horselink-sdk",
-  "version": "1.0.34",
+  "version": "1.0.36",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,9 +10,6 @@
   "repository": "git@github.com:horse-link/sdk.horse.link.git",
   "author": "Horse Link <admin@horse.link>",
   "license": "CC0-1.0",
-  "publishConfig": {
-    "access": "restricted"
-  },
   "scripts": {
     "_build": "tsc && tsc --project tsconfig.cjs.json && node ./postbuild.cjs",
     "build": "tsc",
