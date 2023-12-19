@@ -1,6 +1,6 @@
 {
   "name": "horselink-sdk",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -19,8 +19,8 @@
     "test": "jest",
     "format": "prettier --write src",
     "format-staged": "pretty-quick --staged",
-    "prepare": "husky install",
-    "prepublish": "yarn test && yarn build"
+    "prepublish": "yarn test && yarn build",
+    "publish": "yarn build && npm pack && npm publish"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.1",
