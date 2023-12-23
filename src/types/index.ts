@@ -1,5 +1,4 @@
 import { BigNumber } from "ethers";
-// import { RaceStatus } from "../constants";
 
 export enum RaceStatus {
   INTERIM = "Interim",
@@ -125,6 +124,7 @@ export type MarketDetails = {
   location: string;
   locationCode: string;
   raceNumber: string;
+  type: string;
 };
 
 export type Meeting = {
@@ -280,7 +280,7 @@ export type Race = {
   end_unix?: number;
   close?: string;
   close_unix?: number;
-  status: RaceStatus;
+  status: string; // todo change to enum
   hasOdds: boolean;
 };
 

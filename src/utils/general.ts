@@ -18,10 +18,37 @@ export const getIndexFromId = (id: string): number => {
   return Number(parts[parts.length - 1]);
 };
 
+
+// MarketId 12 chars
+// AAAAAABBBCCW
+// A = date as days since epoch
+// B = location code
+// C = race number
+// T = type (W = Win, P = Place)
+export const makeMarketId = (
+  date: Date,
+  location: string,
+  raceNumber: string
+): string => {
+  //Turn Date object into number of days since 1/1/1970, padded to 6 digits
+  const daysSinceEpoch = Math.floor(
+    (date.getTime() + TAB_TIMEZONE_OFFSET) / MILLIS_IN_DAY
+  )
+    .toString()
+    .padStart(6, "0");
+  const result = `${daysSinceEpoch}${location}${raceNumber
+    .toString()
+    .padStart(2, "0")}`;
+  if (result.length !== 11) {
+    throw new Error("Invalid marketId length");
+  }
+  return result;
+};
+
 // RaceId 15 chars
 // MMMMMMMMMMMPPP
 export const makePropositionId = (marketId: string, prediction: number): string => {
-  return `${marketId}W${prediction.toString().padStart(2, "0")}`;
+  return `${marketId}${prediction.toString().padStart(2, "0")}`;
 };
 
 export const getNonce = async (): Promise<string> => {
@@ -32,13 +59,14 @@ export const getNonce = async (): Promise<string> => {
   );
 };
 
-// // MarketId 11 chars
+// // MarketId 12 chars
 // // AAAAAABBBCC
 // // A = date as days since epoch
 // // B = location code
 // // C = race number
+// // T = type = W = Win, P = Place
 // export const rehydrateMarketId = async (marketId: string): Promise<MarketDetails> => {
-//   if (marketId.length !== 11) {
+//   if (marketId.length !== 12) {
 //     throw new Error("Invalid marketId length");
 //   }
   
@@ -61,12 +89,14 @@ export const rehydrateMarketIdWithLocation = (marketId: string, location: string
   ).getTime();
 
   const locationCode = marketId.substring(6, 9);
-  const raceNumber = marketId.substring(9, 11);
+  const type = marketId.substring(9, 10);
+  const raceNumber = marketId.substring(10, 12);
   return {
     date,
     location,
     locationCode,
-    raceNumber
+    raceNumber,
+    type
   };
 };
 
@@ -81,7 +111,7 @@ export const rehydrateMarketIdWithLocation = (marketId: string, location: string
 // };
 
 export const rehydratePropositionIdWithMarket = async (propositionId: string, market: MarketDetails): Promise<PropostionDetails> => {
-  if (propositionId.length !== 14) {
+  if (propositionId.length !== 15) {
     throw new Error("Invalid propositionId length");
   }
 

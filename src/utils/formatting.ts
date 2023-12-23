@@ -90,7 +90,7 @@ export const bytes16HexToString = (hex: string): string => {
   return s.slice(0, s.indexOf("\0"));
 };
 
-export const formatTimestamp = (timestamp: string | number, format?: string) => {
+export const formatTimestamp = (timestamp: string | number, format?: string): string => {
   const today = new Date(timestamp).toLocaleString("en-US", {
     timeZone: "Australia/Brisbane"
   });
