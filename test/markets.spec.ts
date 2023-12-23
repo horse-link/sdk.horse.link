@@ -1,14 +1,11 @@
-import { makeMarketId } from "../src/utils/general";
-import { getMarketIdFromPropositionId } from "../src/utils/markets";
+import {
+  getMarketIdFromPropositionId,
+  makeMarketId
+} from "../src/utils/markets";
 
 describe("making marketId tests", () => {
   it("should return correctly formatted id for given date", () => {
-    const result = makeMarketId(
-      new Date("2021-01-01"),
-      "ASC",
-      "1",
-      "W"
-    );
+    const result = makeMarketId(new Date("2021-01-01"), "ASC", "1", "W");
     expect(result).toEqual("018628ASCW01");
 
     const resultTwo = makeMarketId(
