@@ -140,13 +140,13 @@ export type Runner = {
   number: number;
   name: string;
   market_id: string;
+  proposition_id: string;
   close: number;
   end: number;
   win: number;
   place: number;
   handicapWeight: number;
   last5Starts: string;
-  proposition_id: string;
   barrier: number;
   signature: EcSignature;
   win_signature: EcSignature;
