@@ -1,6 +1,6 @@
 {
   "name": "horselink-sdk",
-  "version": "1.0.33",
+  "version": "1.0.38",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,17 +10,13 @@
   "repository": "git@github.com:horse-link/sdk.horse.link.git",
   "author": "Horse Link <admin@horse.link>",
   "license": "CC0-1.0",
-  "publishConfig": {
-    "access": "restricted"
-  },
   "scripts": {
     "_build": "tsc && tsc --project tsconfig.cjs.json && node ./postbuild.cjs",
     "build": "tsc",
     "test": "jest",
     "format": "prettier --write src",
     "format-staged": "pretty-quick --staged",
-    "prepublish": "yarn test && yarn build",
-    "publish": "yarn build && npm pack && npm publish"
+    "prepublish": "yarn test && yarn build"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.1",
