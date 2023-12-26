@@ -14,6 +14,7 @@ export enum BetResult {
   PENDING = "PENDING"
 }
 
+// TODO: make enums
 export type BetStatus =
   | "RESULTED"
   | "PENDING"
@@ -135,26 +136,32 @@ export type Meeting = {
   races: RaceWithResults[];
 };
 
+export type BackWithStats = {
+  amount: BigInt;
+  percentage: number;
+};
+
 export type Runner = {
   nonce: string;
   number: number;
   name: string;
-  market_id: string;
-  proposition_id: string;
+  market_id: string; // remove
+  proposition_id: string; // remove
   close: number;
   end: number;
-  win: number;
-  place: number;
+  win: number; // remove
+  place: number; // remove
   handicapWeight: number;
   last5Starts: string;
   barrier: number;
-  signature: EcSignature;
-  win_signature: EcSignature;
-  place_signature: EcSignature;
+  signature: EcSignature; // remove
+  win_signature: EcSignature; // remove
+  place_signature: EcSignature; // remove
   status: RunnerStatus;
   rider: string;
-  backed: number;
-  percentage: number;
+  backed: number; // remove
+  percentage: number; // remove
+  backs: Back[];
 };
 
 export type RunnerStatus = "Open" | "Scratched" | "LateScratched";
@@ -213,15 +220,9 @@ export type Back = {
   market_id: string;
   close: number;
   end: number;
-  odds: number; // remove
-  win: number;
-  place: number;
-  proposition_id: string; // remove
-  win_proposition_id: string;
-  place_proposition_id: string;
-  signature: EcSignature; // remove
-  win_signature: EcSignature;
-  place_signature: EcSignature;
+  odds: number;
+  proposition_id: string;
+  signature: EcSignature;
 };
 
 // The parameters for a call to back() on the Market contract.
@@ -288,6 +289,7 @@ export type RaceWithResults = Race & {
   results?: number[];
 };
 
+// REMOVE THE RACE PART FROM THE PROPERTIES, JUST status not raceStatus
 export type RaceInfo = {
   raceNumber: number;
   raceName: string;
@@ -426,8 +428,8 @@ export type VaultInfo = {
 };
 
 export type PropostionDetails = {
-  marketId: string,
-  market: MarketDetails,
-  runner: string, // number?
-  place: string // number?
-}
+  marketId: string;
+  market: MarketDetails;
+  runner: string; // number?
+  place: string; // number?
+};

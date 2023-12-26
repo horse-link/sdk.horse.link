@@ -57,23 +57,19 @@ export const getMarketIdFromPropositionId = (propositionId: string): string => {
   return propositionId.slice(0, -2);
 };
 
-
-// // MarketId 12 chars
-// // AAAAAABBBCC
-// // A = date as days since epoch
-// // B = location code
-// // C = race number
-// // T = type = W = Win, P = Place
-// export const rehydrateMarketId = async (marketId: string): Promise<MarketDetails> => {
-//   if (marketId.length !== 12) {
-//     throw new Error("Invalid marketId length");
-//   }
+// MarketId 12 chars
+// AAAAAABBBCC
+// A = date as days since epoch
+// B = location code
+// C = race number
+// T = type = W = Win, P = Place
+export const rehydrateMarketId = async (marketId: string): Promise<MarketDetails> => {
+  if (marketId.length !== 12) {
+    throw new Error("Invalid marketId length");
+  }
   
-//   const locationCode = marketId.substring(6, 9);
-//   const location = await getLocationFromCode(locationCode);
-  
-//   return rehydrateMarketIdWithLocation(marketId, location);
-// };
+  return rehydrateMarketIdWithLocation(marketId, "UNKNOWN");
+};
 
 // MarketId 12 chars
 // AAAAAABBBCC
@@ -105,15 +101,15 @@ export const rehydrateMarketIdWithLocation = (marketId: string, location: string
   };
 };
 
-// export const rehydratePropositionId = async (propositionId: string): Promise<PropostionDetails> => {
-//   if (propositionId.length !== 14) {
-//     throw new Error("Invalid propositionId length");
-//   }
-//   const marketId = propositionId.substring(0, 11);
-//   const market = await rehydrateMarketId(marketId);
+export const rehydratePropositionId = async (propositionId: string): Promise<PropostionDetails> => {
+  if (propositionId.length !== 14) {
+    throw new Error("Invalid propositionId length");
+  }
+  const marketId = propositionId.substring(0, 11);
+  const market = await rehydrateMarketId(marketId);
 
-//   return rehydratePropositionIdWithMarket(propositionId, market);
-// };
+  return rehydratePropositionIdWithMarket(propositionId, market);
+};
 
 export const rehydratePropositionIdWithMarket = async (propositionId: string, market: MarketDetails): Promise<PropostionDetails> => {
   if (propositionId.length !== 16) {
