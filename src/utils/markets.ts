@@ -1,4 +1,4 @@
-import { MarketDetails, Meet, PropostionDetails, Race } from "../types";
+import { MarketDetails, Meet, PropositionDetails, Race } from "../types";
 const MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
 const TAB_TIMEZONE_OFFSET = 10 * 60 * 60 * 1000; // GMT +10, not daylight savings
 
@@ -64,10 +64,6 @@ export const getMarketIdFromPropositionId = (propositionId: string): string => {
 // C = race number
 // T = type = W = Win, P = Place
 export const rehydrateMarketId = async (marketId: string): Promise<MarketDetails> => {
-  if (marketId.length !== 12) {
-    throw new Error("Invalid marketId length");
-  }
-  
   return rehydrateMarketIdWithLocation(marketId, "UNKNOWN");
 };
 
@@ -101,7 +97,7 @@ export const rehydrateMarketIdWithLocation = (marketId: string, location: string
   };
 };
 
-export const rehydratePropositionId = async (propositionId: string): Promise<PropostionDetails> => {
+export const rehydratePropositionId = async (propositionId: string): Promise<PropositionDetails> => {
   if (propositionId.length !== 14) {
     throw new Error("Invalid propositionId length");
   }
@@ -111,7 +107,7 @@ export const rehydratePropositionId = async (propositionId: string): Promise<Pro
   return rehydratePropositionIdWithMarket(propositionId, market);
 };
 
-export const rehydratePropositionIdWithMarket = async (propositionId: string, market: MarketDetails): Promise<PropostionDetails> => {
+export const rehydratePropositionIdWithMarket = async (propositionId: string, market: MarketDetails): Promise<PropositionDetails> => {
   if (propositionId.length !== 16) {
     throw new Error("Invalid propositionId length");
   }

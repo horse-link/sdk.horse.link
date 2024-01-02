@@ -217,6 +217,7 @@ export type MeetInfo = {
 
 export type Back = {
   nonce: string;
+  type: string;
   market_id: string;
   close: number;
   end: number;
@@ -427,7 +428,7 @@ export type VaultInfo = {
   userSharePercentage?: string;
 };
 
-export type PropostionDetails = {
+export type PropositionDetails = {
   marketId: string;
   market: MarketDetails;
   runner: string; // number?
