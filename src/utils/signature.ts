@@ -23,6 +23,14 @@ export const signMessage = async (message: string, signer: ethers.Signer) => {
   return { v, r, s };
 };
 
+export const signMessageAsString = async (
+	message: string,
+	signer: ethers.Signer
+) => {
+	const sig = await signer.signMessage(ethers.utils.arrayify(message));
+	return sig;
+};
+
 const makeSetMarketOracleResultMessage = (marketId: string, propositionId: string) => {
   const setMarketOracleResultMessage = ethers.utils.solidityKeccak256(["bytes16", "bytes16"], [marketId, propositionId]);
   return setMarketOracleResultMessage;

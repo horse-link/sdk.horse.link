@@ -64,7 +64,7 @@ export const getMarketIdFromPropositionId = (propositionId: string): string => {
 // B = location code
 // C = race number
 // T = type = W = Win, P = Place
-export const rehydrateMarketId = async (marketId: string): Promise<MarketDetails> => {
+export const rehydrateMarketId = (marketId: string): MarketDetails => {
   return rehydrateMarketIdWithLocation(marketId, "UNKNOWN");
 };
 
