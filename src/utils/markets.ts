@@ -1,4 +1,5 @@
 import { MarketDetails, Meet, PropositionDetails, Race } from "../types";
+import { DataHexString, bytes16HexToString } from "./formatting";
 const MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
 const TAB_TIMEZONE_OFFSET = 10 * 60 * 60 * 1000; // GMT +10, not daylight savings
 
@@ -95,6 +96,39 @@ export const rehydrateMarketIdWithLocation = (marketId: string, location: string
     raceNumber,
     type
   };
+};
+
+export const hydrateMarketId = (
+	marketId: string | DataHexString
+): MarketDetails => {
+	
+  // todo: check length == 12
+
+  const id = isHexString(marketId) ? bytes16HexToString(marketId) : marketId;
+	const daysSinceEpoch = parseInt(id.slice(0, 6));
+	const location = id.slice(6, 9);
+  const type = id.slice(9, 10);
+	const raceNumber = id.slice(10, 12);
+
+	return {
+		date: daysSinceEpoch,
+    location: "UNKNOWN",
+		locationCode: location,
+		raceNumber,
+    type
+	};
+}
+
+export const isHexString = (value: string): boolean => {
+  if (!RegExp("^0x[0-9A-Fa-f]*$").test(value)) {
+    return false;
+  }
+
+  if (value.length % 2 !== 0) {
+    return false;
+  }
+
+  return true;
 };
 
 export const rehydratePropositionId = async (propositionId: string): Promise<PropositionDetails> => {

@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import { ethers } from "ethers";
 
+export type DataHexString = string;
+
 export const formatToFourDecimals = (amount: string): string => {
   const parsedAmount = parseFloat(amount);
   if (parsedAmount === 0) return "0.0000";
