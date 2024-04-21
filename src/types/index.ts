@@ -145,18 +145,11 @@ export type Runner = {
   nonce: string;
   number: number;
   name: string;
-  market_id: string; // remove
-  proposition_id: string; // remove
   close: number;
   end: number;
-  win: number; // remove
-  place: number; // remove
   handicapWeight: number;
   last5Starts: string;
   barrier: number;
-  signature: EcSignature; // remove
-  win_signature: EcSignature; // remove
-  place_signature: EcSignature; // remove
   status: RunnerStatus;
   rider: string;
   backed: number; // remove
